@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'rentalport.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.msql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'camerarental',
         'USER':'root',
         'PASSWORD':'',
@@ -126,3 +126,6 @@ STATICFILES_DIRS =[
     os.path.join(BASE_DIR,"static"),
      ]
 STATIC_URL = '/static/'
+
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'med_folder')
+MEDIA_URL = '/med_folder/'
