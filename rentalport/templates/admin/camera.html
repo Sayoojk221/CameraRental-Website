@@ -1,0 +1,36 @@
+{% extends 'admin/admin.html' %}
+{% block content %}
+<div class="col-lg-5">
+    <div class="card">
+        <div class="card-header">Camera Add</div>
+            <div class="card-body card-block">
+                <form method='POST' action="/cameraadd/"  enctype='multipart/form-data' >
+                {% csrf_token %}
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="File" id="image" name="image" placeholder="Image" class="form-control">
+
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="name" name="name" placeholder="Camera Name" class="form-control">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" id="price" name="price" placeholder="Price" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="number" id="quantity" name="quantity" placeholder="Quantity" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-actions form-group">
+                        <button type="submit" class="btn btn-secondary btn-sm">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

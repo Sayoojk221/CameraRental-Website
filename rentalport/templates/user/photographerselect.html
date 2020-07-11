@@ -1,0 +1,33 @@
+{% extends 'user/userpage.html' %}
+{% block content %}
+<div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">Select Photographer</div>
+                                    <div class="card-body card-block">
+                                        <form action="" method="post" action='/selectphotographer/' >
+                                          {% csrf_token %}
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <select name="photographer">
+                                                    {% for item in cameraman %}
+                                                    {% if item.id not in available %}
+                                                        <option value='{{ item.id }}'>{{ item.name }}</option>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input type="Date" id="date" name="date" placeholder="Date" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-actions form-group">
+                                                <button type="submit" class="btn btn-secondary btn-sm">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+{% endblock %}

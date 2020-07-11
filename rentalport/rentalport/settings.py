@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'rentalport.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'camerarental',
+        'NAME': 'cameraport',
         'USER':'root',
         'PASSWORD':'',
         'HOST':'localhost',

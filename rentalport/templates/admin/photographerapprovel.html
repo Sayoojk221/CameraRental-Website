@@ -1,0 +1,40 @@
+{% extends 'admin/admin.html' %}
+{% block content %}
+<div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <div class="table-responsive table--no-card m-b-30">
+                                    <table class="table table-borderless table-striped table-earning">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Place</th>
+                                                <th >Contactnumber</th>
+                                                <th ></th>
+                                            </tr>
+                                        </thead>
+                                        {% for item in photo_details %}
+                                        {% if item.status == 'pending' %}
+                                        <tbody>
+                                            <tr>
+                                                <td>{{ item.name }}</td>
+                                                <td>{{ item.email }}</td>
+                                                <td>{{ item.place }}</td>
+                                                <td>{{ item.contactnumber }}</td>
+                                                <td><a href="/photoapprove/?id={{ item.id }}">approve</a></td>
+                                            </tr>
+                                        </tbody>
+                                         {% endif %}
+                                         {% endfor %}
+                                    </table>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+{% endblock %}
+

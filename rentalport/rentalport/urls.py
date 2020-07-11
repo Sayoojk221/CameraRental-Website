@@ -18,7 +18,8 @@ from django.urls import path,include
 from camera import views
 from django.conf.urls.static import  static
 from django.conf import settings
+
 urlpatterns = [
-    path('admin/',views.admin,name='admin'),
+    path('admin/',views.admin_login),
     path('',include('camera.urls'))
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,57 @@
+{% extends 'photographer/base.html' %}
+{% block content %}
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-header">Register</div>
+        <div class="card-body card-block">
+              <form method="POST" action='/photographer/'  >
+              {% csrf_token %}
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" id="name" name="name" placeholder="Name" class="form-control">
+                        <div class="input-group-addon">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="email" id="email2" name="email" placeholder="Email" class="form-control">
+                        <div class="input-group-addon">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="password" id="password" name="password" placeholder="Password" class="form-control">
+                        <div class="input-group-addon">
+                            <i class="fa fa-asterisk"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" id="place" name="place" placeholder="Place" class="form-control">
+                        <div class="input-group-addon">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                    </div>
+                </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" id="contactnumber" name="contactnumber" placeholder="Contactnumber" class="form-control">
+                        <div class="input-group-addon">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions form-group">
+                    <button type="submit" class="btn btn-secondary btn-sm">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

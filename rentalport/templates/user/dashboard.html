@@ -1,0 +1,22 @@
+{% extends 'user/userpage.html' %}
+{% block content %}
+<div class='container'>
+    <div class='row'>
+{% for item in data %}
+{% if item.quantity > '0' %}
+    <div class='container'>
+        <div class='col-md-3'>
+            <div class="card">
+              <img class="card-img-top" src="{{item.cameraimage.url}}" width="200" height="150" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{item.name}}</h5>
+                <p class="card-text">Only ${{ item.price}}</p>
+                <a href="/cart/?id={{item.id}}" class="btn btn-primary">add cart</a>
+              </div>
+        </div>
+    </div>
+{% endif %}
+{% endfor %}
+{% endblock %}
+</div>
+</div>
