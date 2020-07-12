@@ -1,35 +1,36 @@
 {% extends 'user/userpage.html' %}
 {% block content %}
 
-    <div class="limiter">
-        <div class="container-table100">
-            <div class="wrap-table100">
-                <div class="table100 ver4 m-b-110">
-                    <table data-vertable="ver4">
-                        <thead>
-                            <tr class="row100 head">
-                                <th class="column100 column2" data-column="column2">Date</th>
-                                <th class="column100 column3" data-column="column3">Camera Name</th>
-                                <th class="column100 column4" data-column="column4">Address</th>
-                                <th class="column100 column5" data-column="column5">Price</th>
-                                <th class="column100 column6" data-column="column6">Quantity</th>
-                                <th class="column100 column7" data-column="column7"></th>
-                            </tr>
-                        </thead>
-                        {% for item in order %}
-                        <tbody>
-                            <tr class="row100">
-                                <td class="column100 column2" data-column="column2">{{item.date|date:'d-m-Y'}}</td>
-                                <td class="column100 column3" data-column="column3">{{item.cameraId}}</td>
-                                <td class="column100 column4" data-column="column4">{{item.address}}</td>
-                                <td class="column100 column5" data-column="column5">{{item.price}}</td>
-                                <td class="column100 column6" data-column="column6">{{item.quantity}}</td>
-                                <td class="column100 column7" data-column="column7"><a href="/cameraupdate/">Update</a> &nbsp;&nbsp;<a href="/cameradelete/?id={{ item.id }}">Delete</a></td>
-                            </tr>
-                        </tbody>
-                        {% endfor %}
-                    </table>
-                </div>
+<div class="limiter">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="table100 ver4 m-b-110">
+                <table data-vertable="ver4">
+                    <thead>
+                        <tr class="row100 head">
+                            <th class="column100 column3" data-column="column3">Photographer Name</th>
+                            <th class="column100 column4" data-column="column4">Place</th>
+                            <th class="column100 column5" data-column="column5">Phone Number</th>
+                            <th class="column100 column5" data-column="column5">Status</th>
+                        </tr>
+                    </thead>
+                    {% for item in order %}
+                    {% for i in status %}
+                    <tbody>
+                        <tr class="row100">
+                            <td class="column100 column3" data-column="column3">{{item.name}}</td>
+                            <td class="column100 column4" data-column="column4">{{item.place}}</td>
+                            <td class="column100 column5" data-column="column5">{{item.contactnumber}}</td>
+                            <td class="column100 column6" data-column="column6">{{i.status}}</td>
+                            {% endfor %}
+                            {% endfor %}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 

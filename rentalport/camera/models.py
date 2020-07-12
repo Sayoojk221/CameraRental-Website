@@ -44,10 +44,11 @@ class booking(models.Model):
     quantity = models.CharField(max_length=200,default='')
     price = models.CharField(max_length=200,default='')
     date = models.DateTimeField(default=timezone.now)
-    cameramanname = models.CharField(max_length=200,default='')
 
 class photographerboooking(models.Model):
     photographerid = models.ForeignKey(photographer,on_delete=models.CASCADE)
     userid = models.ForeignKey(userregister,on_delete=models.CASCADE)
     date = models.CharField(max_length=200,default='')
+    status = models.CharField(max_length=200,default='')
+
 

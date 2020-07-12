@@ -1,0 +1,39 @@
+{% extends 'photographer/photographer.html' %}
+{% block content %}
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="table-responsive table--no-card m-b-30">
+                        <table class="table table-borderless table-striped table-earning">
+                            <thead>
+                                <tr>
+                                    <th>name </th>
+                                    <th>username</th>
+                                    <th >date</th>
+                                    <th >Number </th>
+                                    <th ></th>
+                                </tr>
+                            </thead>
+                            {% for item in deatils %}
+                            <tbody>
+                                <tr>
+                                    <td>{{ item.username }}</td>
+                                    <td>{{ item.city }}</td>
+                                    <td>{{ item.state }}</td>
+                                    <td>{{ item.number }}</td>
+                                    {% endfor %}
+                                    {% for i in photoid %}
+                                    <td><a href="/photobookingapprove/?id={{ i.id }}">approve</a></td>
+                                    {% endfor %}
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
