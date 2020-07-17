@@ -1,45 +1,40 @@
-{% extends 'photographer/base.html' %}
+{% extends 'photographer/photographer.html' %}
 {% block content %}
 <div class="col-lg-6">
     <div class="card">
-        <div class="card-header">Register</div>
+        <div class="card-header">Profile</div>
         <div class="card-body card-block">
-              <form method="POST" action='/photographer/'  >
+              <form method="POST" action='/photographer_profile/'  enctype='multipart/form-data' >
               {% csrf_token %}
-
+              {% for item in details %}
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="text" id="name" name="name" placeholder="Name" class="form-control">
+                        <input type="text" id="username" name="name" value='{{ item.name }}' class="form-control">
 
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="email" id="email2" name="email" placeholder="Email" class="form-control">
+                        <input type="email" id="email2" name="email" value='{{ item.email }}' class="form-control">
 
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="password" id="password" name="password" placeholder="Password" class="form-control">
+                        <input type="text" id="city" name="place" value='{{ item.place }}' class="form-control">
 
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="text" id="place" name="place" placeholder="Place" class="form-control">
-
-                    </div>
-                </div>
-                  <div class="form-group">
-                    <div class="input-group">
-                        <input type="text" id="contactnumber" name="contactnumber" placeholder="Contactnumber" class="form-control">
+                        <input type="text" id="number" name="number" value='{{ item.contactnumber }}' class="form-control">
 
                     </div>
                 </div>
                 <div class="form-actions form-group">
                     <button type="submit" class="btn btn-secondary btn-sm">Submit</button>
                 </div>
+                {% endfor %}
             </form>
         </div>
     </div>

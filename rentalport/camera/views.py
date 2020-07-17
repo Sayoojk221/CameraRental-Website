@@ -73,6 +73,35 @@ def camera_add(request):
     else:
         return render(request,'admin/camera.html')
 
+def camera_details(request):
+    fullcamera_details = camera.objects.all()
+    return render(request,'admin/cameradetails.html',{'details':fullcamera_details})
+
+def camera_update(request):
+    fullcamera_details = camera.objects.all()
+    cameraid = request.GET.get('id')
+    if request.method == 'POST':
+        camera_id = request.POST['id_camera']
+        image = request.FILES.get('image')
+        name = request.POST['name']
+        price = request.POST['price']
+        quantity = request.POST['quantity']
+        camera_id_image = camera.objects.get(id=camera_id)
+        camera_id_image.cameraimage=image
+        camera_id_image.save()
+        camera.objects.all().filter(id=camera_id).update(name=name,price=price,quantity=quantity)
+        return render(request,'admin/cameradetails.html',{'details':fullcamera_details})
+    else:
+        clicked_camera_details = camera.objects.all().filter(id=cameraid)
+        return render(request,'admin/cameraupdate.html',{'details':clicked_camera_details})
+
+def camera_delete(request):
+    fullcamera_details = camera.objects.all()
+    clicked_camera_id = request.GET.get('id')
+    camera.objects.all().filter(id=clicked_camera_id).delete()
+    return render(request,'admin/cameradetails.html',{'details':fullcamera_details})
+
+
 def camerabooking_update(request):
     if request.session.has_key('id'):
         userid = request.session['id']
@@ -259,4 +288,30 @@ def photographerapprove(request):
             return render(request,'photographer/approve.html',{'deatils':user_view,'photoid':photoid_deatils})
     else:
         return render(request,'photographer/login.html')
+def user_profile(request):
+    user_id = request.session['id']
+    user_detail = userregister.objects.filter(id=user_id)
+    if request.method == 'POST':
+        username = request.POST['username']
+        email = request.POST['email']
+        city = request.POST['city']
+        state = request.POST['state']
+        pincode = request.POST['zip']
+        number = request.POST['number']
+        userregister.objects.filter(id=user_id).update(username=username,email=email,city=city,state=state,pincode=pincode,number=number)
+        return render(request,'user/profile.html',{'details':user_detail})
+    else:
+        return render(request,'user/profile.html',{'details':user_detail})
 
+def photographer_profile(request):
+    photo_id = request.session['photoid']
+    photo_detail = photographer.objects.filter(id=photo_id)
+    if request.method == 'POST':
+        name = request.POST['username']
+        email = request.POST['email']
+        place = request.POST['city']
+        number = request.POST['number']
+        phtotgrapher.objects.filter(id=photo_id).update(name=username,email=email,place=place,contactnumber=number)
+        return render(request,'photographer/profile.html',{'details':photo_detail})
+    else:
+        return render(request,'photographer/profile.html',{'details':photo_detail})

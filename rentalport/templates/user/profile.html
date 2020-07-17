@@ -1,0 +1,52 @@
+{% extends 'user/userpage.html' %}
+{% block content %}
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-header">Profile</div>
+        <div class="card-body card-block">
+              <form method="POST" action='/profile_user/'  enctype='multipart/form-data' >
+              {% csrf_token %}
+              {% for item in details %}
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" id="username" name="username" value='{{ item.username }}' class="form-control">
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="email" id="email2" name="email" value='{{ item.email }}' class="form-control">
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" id="city" name="city" value='{{ item.city }}' class="form-control">
+
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="input-group">
+                        <input type="text" id="state" name="state" value='{{ item.state }}' class="form-control">
+                    </div>
+                </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" id="zip" name="zip" value='{{ item.pincode }}' class="form-control">
+                    </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" id="number" name="number" value='{{ item.number }}' class="form-control">
+
+                    </div>
+                </div>
+                <div class="form-actions form-group">
+                    <button type="submit" class="btn btn-secondary btn-sm">Submit</button>
+                </div>
+                {% endfor %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
